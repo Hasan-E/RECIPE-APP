@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useContext } from "react";
+import Header from "./../components/Header";
+import { RecipeContext } from "../context/RecipeProvider";
+import RecipeCard from "./RecipeCard";
+import chief from "../assets/home.svg";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const { darkMode, food } = useContext(RecipeContext);
 
-export default Home
+  console.log("food", food);
+  return (
+    <div className={darkMode ? "dark" : ""}>
+      <div
+        className={`transition-colors ${
+          darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-slate-800"
+        }`}
+      >
+        <Header />
+
+        {food.length > 0 ? (
+          <RecipeCard />
+        ) : (
+          <div className="flex justify-center items-center h-[calc(100vh-10px)]">
+            <img src={chief} alt="chief" />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Home;

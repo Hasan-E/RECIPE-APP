@@ -4,8 +4,9 @@ import { Navigate, Outlet } from 'react-router-dom'
 const PrivateRouter = () => {
 
     const username=localStorage.getItem("username")
+    const password=localStorage.getItem("password")
 
-  return username==="helen" ? <Outlet/> : <Navigate to="/"/>
+  return username==="rooster" && password==="1234" ? <Outlet/> : <Navigate to="/"/>
 }
 
 export default PrivateRouter
